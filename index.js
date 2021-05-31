@@ -47,8 +47,18 @@ app.post("/form",(req,res) => {
         nomeError = "O nome não pode ser vazio"
     }
 
-    res.send(email)
+    if(nome.length < 4){
+        nomeError = "O nome é muito pequeno!"
+    }
+
+    if(emailError != undefined || pontosError != undefined || nomeError != undefined){
+        res.redirect("/");
+    }else{
+        res.send("SHOW DE BOLA ESSE FORM!");
+    }
 })
+
+
 
 app.listen(5678,(req, res) => {
     console.log("Servidor rodando!")
